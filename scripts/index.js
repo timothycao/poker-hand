@@ -10,6 +10,11 @@ newDeck.addEventListener('click', async () => {
     currentDeck = data.deck_id;
 
     document.querySelector('#deck').src = 'images/card-back.png';
+    document.querySelector('#deck').classList.add('card-hover');
+    [1, 2, 3, 4, 5].map((num) => {
+      document.querySelector(`#card-${num}`).src = 'images/placeholder.png';
+      document.querySelector(`#card-${num}`).classList.remove('card-hover');
+    });
     document.querySelector('#message').innerHTML = `You have created an unshuffled deck of ${data.remaining} cards.`;
 
     console.log(`You have created an unshuffled deck of ${data.remaining} cards.`);
@@ -53,8 +58,9 @@ draw.addEventListener('click', async () => {
       console.log(`You drew a ${card.value} of ${card.suit}.`);
 
       document.querySelector(`#card-${index + 1}`).src = card.image;
+      document.querySelector(`#card-${index + 1}`).classList.add('card-hover');
     });
-    document.querySelector('#message').innerHTML = `There are ${data.remaining} cards left in the deck.`;
+    document.querySelector('#message').innerHTML = `There are ${data.remaining} cards left in the deck. Analyze for the best hand.`;
 
     console.log(`There are ${data.remaining} cards left in the deck.`);
 
@@ -68,7 +74,8 @@ draw.addEventListener('click', async () => {
 
 const analyze = document.querySelector('#analyze');
 
-analyze.addEventListener('click', async () => {
+analyze.addEventListener('click', () => {
+
   let values = [];
   let suits = [];
 
@@ -77,7 +84,7 @@ analyze.addEventListener('click', async () => {
     suits.push(card.suit);
   });
 
-  const message = analyzeCards(values, suits);
+  const message = analyzeHand(values, suits);
 
   document.querySelector('#message').innerHTML = message + ' Draw again for another result.';
 

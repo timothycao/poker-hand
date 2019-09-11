@@ -3,29 +3,33 @@
 <html>
   <head>
     <title>Poker Hand</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="style.css"/>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <script defer src="poker.js"></script>
     <script defer type="text/javascript" src="index.js"></script>
   </head>
   <body>
-    <h1>Poker Hand</h1>
-    <div>
-      <button id="new-deck">New Deck</button>
-      <button id="shuffle">Shuffle Deck</button>
-      <button id="draw">Draw 5 Cards</button>
-      <button id="analyze">Analyze Hand</button>
+    <div id="header">
+      <img src="images/royal-flush.jpg" width="300"/>
+      <h1 id="header-text">Poker Hand</h1>
+    </div>
+    <div id="buttons">
+      <button id="new-deck" class="button">New Deck</button>
+      <button id="shuffle" class="button">Shuffle Deck</button>
+      <button id="draw" class="button">Draw 5 Cards</button>
+      <button id="analyze" class="button">Analyze Hand</button>
     </div>
     <div>
       <h2 id="message">Create a new deck to begin!</h2>
     </div>
-    <div>
-      <img id="deck"/>
-      <img id="card-1"/>
-      <img id="card-2"/>
-      <img id="card-3"/>
-      <img id="card-4"/>
-      <img id="card-5"/>
+    <div id="cards">
+      <img id="deck" class="card" src="images/placeholder.png"/>
+      <img id="card-1" class="card" src="images/placeholder.png"/>
+      <img id="card-2" class="card" src="images/placeholder.png"/>
+      <img id="card-3" class="card" src="images/placeholder.png"/>
+      <img id="card-4" class="card" src="images/placeholder.png"/>
+      <img id="card-5" class="card" src="images/placeholder.png"/>
     </div>
   </body>
 </html>

@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const {countValues, isFlush, isStraight, analyzeCards} = require('./poker');
+const {countValues, isFlush, isStraight, analyzeHand} = require('./poker');
 
 describe('countValues', () => {
   let values;
@@ -35,53 +35,53 @@ describe('isStraight', () => {
   });
 });
 
-describe('analyzeCards', () => {
+describe('analyzeHand', () => {
   let values, suits;
   it('should correctly identify a pair', () => {
     values = [3, 1, 1, 8, 12];
     suits = ['HEARTS', 'SPADES', 'DIAMONDS', 'CLUBS', 'CLUBS'];
-    expect(analyzeCards(values, suits)).to.equal('You got a Pair!');
+    expect(analyzeHand(values, suits)).to.equal('You got a Pair!');
   });
 
   it('should correctly identify two pairs', () => {
     values = [1, 1, 2, 8, 8];
     suits = ['HEARTS', 'SPADES', 'DIAMONDS', 'DIAMONDS', 'CLUBS'];
-    expect(analyzeCards(values, suits)).to.equal('You got Two Pairs!');
+    expect(analyzeHand(values, suits)).to.equal('You got Two Pairs!');
   });
 
   it('should correctly identify three of a kind', () => {
     values = [7, 7, 2, 7, 12];
     suits = ['HEARTS', 'SPADES', 'DIAMONDS', 'CLUBS', 'CLUBS'];
-    expect(analyzeCards(values, suits)).to.equal('You got Three of a Kind!');
+    expect(analyzeHand(values, suits)).to.equal('You got Three of a Kind!');
   });
 
   it('should correctly identify full house', () => {
     values = [9, 2, 2, 9, 9];
     suits = ['HEARTS', 'SPADES', 'DIAMONDS', 'CLUBS', 'SPADES'];
-    expect(analyzeCards(values, suits)).to.equal('You got Full House!');
+    expect(analyzeHand(values, suits)).to.equal('You got Full House!');
   });
 
   it('should correctly identify four of a kind', () => {
     values = [8, 8, 8, 8, 12];
     suits = ['HEARTS', 'SPADES', 'DIAMONDS', 'CLUBS', 'CLUBS'];
-    expect(analyzeCards(values, suits)).to.equal('You got Four of a Kind!');
+    expect(analyzeHand(values, suits)).to.equal('You got Four of a Kind!');
   });
 
   it('should correctly identify a flush', () => {
     values = [7, 5, 2, 8, 10];
     suits = ['HEARTS', 'HEARTS', 'HEARTS', 'HEARTS', 'HEARTS'];
-    expect(analyzeCards(values, suits)).to.equal('You got a Flush!');
+    expect(analyzeHand(values, suits)).to.equal('You got a Flush!');
   });
 
   it('should correctly identify a straight', () => {
     values = [10, 7, 11, 8, 9];
     suits = ['HEARTS', 'SPADES', 'DIAMONDS', 'CLUBS', 'CLUBS'];
-    expect(analyzeCards(values, suits)).to.equal('You got a Straight!');
+    expect(analyzeHand(values, suits)).to.equal('You got a Straight!');
   });
 
   it('should correctly identify a straight flush', () => {
     values = [9, 8, 12, 10, 11];
     suits = ['CLUBS', 'CLUBS', 'CLUBS', 'CLUBS', 'CLUBS'];
-    expect(analyzeCards(values, suits)).to.equal('You got a Straight Flush!');
+    expect(analyzeHand(values, suits)).to.equal('You got a Straight Flush!');
   });
 });

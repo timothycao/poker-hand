@@ -44,7 +44,7 @@ const isStraight = (values) => {
   return true;
 }
 
-const analyzeCards = (values, suits) => {
+const analyzeHand = (values, suits) => {
   let message = '';
 
   switch (Object.values(countValues(values)).filter(count => count > 1).join('')) {
@@ -83,5 +83,5 @@ module.exports = {
   countValues,
   isFlush,
   isStraight,
-  analyzeCards
+  analyzeHand
 };
