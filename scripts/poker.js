@@ -1,4 +1,4 @@
-const valuesMap = {
+const valuesMap = { // used to convert card values to numbers
   2: 2,
   3: 3,
   4: 4,
@@ -14,7 +14,7 @@ const valuesMap = {
   ACE: 14
 };
 
-const countValues = (values) => {
+const countValues = (values) => { // used to count the occurrences of each value in a hand
   let counts = {};
 
   for (let i = 0; i < values.length; i++) {
@@ -25,29 +25,29 @@ const countValues = (values) => {
     }
   }
 
-  return counts;
+  return counts;  // return an object
 };
 
-const isFlush = (suits) => {
-  return new Set(suits).size === 1;
+const isFlush = (suits) => {  // used to check whether there is only one suit in a hand
+  return new Set(suits).size === 1; // returns a boolean
 };
 
-const isStraight = (values) => {
+const isStraight = (values) => {  // used to check whether the values in a hand are consecutive when sorted
   let sortedValues = values.sort((a, b) => a - b);
 
   for (let i = 0; i < values.length - 1; i++) {
     if ((sortedValues[i + 1] - sortedValues[i] !== 1)) {
-      return false;
+      return false; // returns boolean
     }
   }
 
-  return true;
+  return true;  // returns boolean
 }
 
-const analyzeHand = (values, suits) => {
+const analyzeHand = (values, suits) => {  // used to ultimately identify the best poker hand
   let message = '';
 
-  switch (Object.values(countValues(values)).filter(count => count > 1).join('')) {
+  switch (Object.values(countValues(values)).filter(count => count > 1).join('')) { // removes single occurrences from object and stringifies remaining value occurrences
     case '2':
       message = 'You got a Pair!';
       break;
@@ -65,7 +65,7 @@ const analyzeHand = (values, suits) => {
       message = 'You got Four of a Kind!';
       break;
     default:
-      if (isFlush(suits) && isStraight(values)) {
+      if (isFlush(suits) && isStraight(values)) { // checks for the best option first
         message = 'You got a Straight Flush!';
       } else if (isFlush(suits)) {
         message = 'You got a Flush!';
@@ -76,10 +76,10 @@ const analyzeHand = (values, suits) => {
       }
       break;
   }
-  return message;
+  return message; // returns a message identifying the best poker hand
 };
 
-module.exports = {
+module.exports = {  // exported for test specs
   countValues,
   isFlush,
   isStraight,
