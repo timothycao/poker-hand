@@ -78,3 +78,10 @@ const analyzeCards = (values, suits) => {
   }
   return message;
 };
+
+module.exports = {
+  countValues,
+  isFlush,
+  isStraight,
+  analyzeCards
+};
