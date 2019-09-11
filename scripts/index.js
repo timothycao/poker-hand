@@ -1,4 +1,5 @@
 let currentDeck = '';
+let hand = [];
 
 const newDeck = document.querySelector('#new-deck');
 
@@ -63,4 +64,23 @@ draw.addEventListener('click', async () => {
     console.log('Draw unsuccessful.');
 
   }
+});
+
+const analyze = document.querySelector('#analyze');
+
+analyze.addEventListener('click', async () => {
+  let values = [];
+  let suits = [];
+
+  hand.map((card) => {
+    values.push(valuesMap[card.value]);
+    suits.push(card.suit);
+  });
+
+  const message = analyzeCards(values, suits);
+
+  document.querySelector('#message').innerHTML = message + ' Draw again for another result.';
+
+  console.log(message);
+
 });
